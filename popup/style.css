@@ -1,6 +1,7 @@
  .extensionModal {
     margin: 10px;
     width: 200px;
+    line-height: 0;
  }
 
  .extensionLogo {
@@ -23,21 +24,18 @@
  }
 
  h4 {
-    font-size: 13px;
+    font-family: 'Poppins';
+    font-size: 15px;
     text-align: center;
     border: 1px;
     padding: 5px;
- }
-
- .buttons {
-
  }
 
  y {
     color: #ffa22a;
  }
 
- .buttons {
+ .buttons-container {
     display: flex;
     max-width: 188px;
     padding: 4px;
@@ -63,7 +61,7 @@
     color: #888888;
     cursor: pointer;
     text-align: center;
-    transition: 0.3 ease;
+    transition: 0.3s ease;
  }
 
  button {
