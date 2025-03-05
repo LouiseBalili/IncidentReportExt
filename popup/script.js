@@ -29,4 +29,13 @@ document.addEventListener("DOMContentLoaded", function() {
             defaultButton.click();
         }
     });
+
+    document.getElementById('sendMail').addEventListener('click', () => {
+        const recipient = 'it@ebcallcenter.com';
+        const subject = '';
+        const body = '';
+        const gmailURL = `https://mail.google.com/mail/?view=cm&fs=1&to=${recipient}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+        window.open(gmailURL, '_blank', 'width=750,height=750,top=75,scrollbars=yes');
+    });
 });
