@@ -32,10 +32,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
     document.getElementById('sendMail').addEventListener('click', () => {
         const recipient = 'it@ebcallcenter.com';
-        const subject = '';
+        const subject = 'Information Security Incident - (Specify Reason for Email/Report)';
         const body = '';
         const gmailURL = `https://mail.google.com/mail/?view=cm&fs=1&to=${recipient}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
         window.open(gmailURL, '_blank', 'width=750,height=750,top=75,scrollbars=yes');
+    });
+
+    document.getElementById('checkValidity').addEventListener('click', () => {
+        window.open('checkValidity.html', '_blank', 'width=450,height=450,top=150,right=1000');
     });
 });

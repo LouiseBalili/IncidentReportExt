@@ -151,4 +151,15 @@
 
  .physical {
    display: none;
+
+ }
+
+ .physical_btn {
+   margin-left: -20px;
+   display: inline-block;
+   cursor: pointer;
+   border-style: none;
+   width: 100vw;
+   padding-top: 4px;
+   padding-bottom: 4px;
  }
