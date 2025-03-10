@@ -30,16 +30,30 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    document.getElementById('sendMail').addEventListener('click', () => {
+    document.getElementById('sendMailInfo').addEventListener('click', () => {
         const recipient = 'it@ebcallcenter.com';
         const subject = 'Information Security Incident - (Specify Reason for Email/Report)';
         const body = '';
         const gmailURL = `https://mail.google.com/mail/?view=cm&fs=1&to=${recipient}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
-        window.open(gmailURL, '_blank', 'width=750,height=750,top=75,scrollbars=yes');
+        window.open(gmailURL, '_blank', 'width=750, height=750, top=75, scrollbars=yes');
     });
 
-    document.getElementById('checkValidity').addEventListener('click', () => {
-        window.open('checkValidity.html', '_blank', 'width=450,height=450,top=150,right=1000');
+    document.getElementById('checkURL').addEventListener('click', () => {
+        window.open('checkValidity.html', '_blank', 'width=500, height=500, top=150');
+    });
+
+    document.getElementById('RTimeProtect').addEventListener('click', () => {
+
+        window.open('RTimeProtect.html', '_blank', 'width=500, height=500, top=150');
+    });
+
+    document.getElementById('sendMailPhysical').addEventListener('click', () => {
+        const recipient = 'ronald.camino@selectvoicecom.com';
+        const subject = 'Physical Security Incident - (Specify Reason for Email/Report)';
+        const body = '';
+
+        const gmailURL = `https://mail.google.com/mail/?view=cm&fs=1&to=${recipient}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        window.open(gmailURL, '_blank', 'width=750, height=750, top=75, scrollbar=yes')
     });
 });
