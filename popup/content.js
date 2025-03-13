@@ -7,16 +7,20 @@ div.style.bottom = '20px';
 div.style.right = '20px'; 
 div.style.zIndex = '9999'; 
 div.style.cursor = 'pointer';
-div.style.width = "36px";
-div.style.height = "36px";
+div.style.width = "38px";
+div.style.height = "38px";
 div.style.backgroundColor = 'white';
 div.style.borderRadius = "50%";
 div.style.border = "solid";
 div.style.borderColor = "grey";
 
-img.src = "/images/SVC Logo.png";
+img.src = "https://i.postimg.cc/Wb8cmdTk/SVC-Logo.png";
 img.alt = "SVC Extension Button";
-img.style.borderRadius = "50%";
+img.style.width = "24px";
+img.style.height = "20px";
+img.style.overflow = "hidden";
+img.style.marginLeft = "4px";
+img.style.marginTop = "4.5px";
 
 // Check if image is loaded correctly
 img.onload = function() {
@@ -41,7 +45,7 @@ div.addEventListener('mouseleave', () => {
 });
 
 div.appendChild(img);
-div.appendChild(button);
+// div.appendChild(button);
 
 document.body.appendChild(div);
 
