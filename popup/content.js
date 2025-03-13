@@ -7,14 +7,14 @@ div.style.bottom = '20px';
 div.style.right = '20px'; 
 div.style.zIndex = '9999'; 
 div.style.cursor = 'pointer';
-div.style.width = "40px";
-div.style.height = "40px";
+div.style.width = "36px";
+div.style.height = "36px";
 div.style.backgroundColor = 'white';
 div.style.borderRadius = "50%";
 div.style.border = "solid";
 div.style.borderColor = "grey";
 
-img.src = "https://manatal-backend-public-assets.s3.amazonaws.com/media/career_portal_logo_direct_upload/fb442c8c-5a6e-4df9-99fb-d539c767133e_SVC_Coloured_logo_for_Dark_Background_01.png";
+img.src = "/images/SVC Logo.png";
 img.alt = "SVC Extension Button";
 img.style.borderRadius = "50%";
 
@@ -41,7 +41,7 @@ div.addEventListener('mouseleave', () => {
 });
 
 div.appendChild(img);
-img.appendChild(button);
+div.appendChild(button);
 
 document.body.appendChild(div);
 
