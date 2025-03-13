@@ -7,13 +7,14 @@ div.style.bottom = '20px';
 div.style.right = '20px'; 
 div.style.zIndex = '9999'; 
 div.style.cursor = 'pointer';
-div.style.width = "32px";
-div.style.height = "32px";
+div.style.width = "36px";
+div.style.height = "36px";
 div.style.borderRadius = "50%";
 div.style.backgroundColor = 'grey';
 
-img.src = "icons/SVC Logo 32x32.png";
+img.src = "./icons/SVCLogo128x128.png";
 img.alt = "SVC Extension Button";
+img.style.borderRadius = "50%";
 
 // Check if image is loaded correctly
 img.onload = function() {
@@ -26,7 +27,7 @@ img.onerror = function() {
 };
 
 div.appendChild(img);
-div.appendChild(button);
+img.appendChild(button);
 
 document.body.appendChild(div);
 

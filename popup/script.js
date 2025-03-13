@@ -40,12 +40,12 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     document.getElementById('checkURL').addEventListener('click', () => {
-        window.open('checkValidity.html', '_blank', 'width=500, height=500, top=150');
+        window.open('information/checkValidity.html', '_blank', 'width=500, height=500, top=150');
     });
 
     document.getElementById('RTimeProtect').addEventListener('click', () => {
 
-        window.open('RTimeProtect.html', '_blank', 'width=500, height=500, top=150');
+        window.open('information/RTimeProtect.html', '_blank', 'width=500, height=500, top=150');
     });
 
     document.getElementById('sendMailPhysical').addEventListener('click', () => {
