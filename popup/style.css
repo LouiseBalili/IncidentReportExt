@@ -168,3 +168,11 @@
  .physical_btn:hover {
     background-color: #f3f3f3;
  }
+
+  #testBtnImg {
+   background-image: "icons/SVC Logo 32x32.png";
+   background-size: cover;
+   background-position: center;
+   cursor: pointer;
+   
+  }

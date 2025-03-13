@@ -4,15 +4,21 @@
   "manifest_version": 3,
   "description": "For incident reporting (Information/Physical).",
   "icons": {
-      "16": "icons/SVClogo16x16.jpg",
-      "32": "icons/SVClogo32x32.jpg",
-      "48": "icons/SVClogo48x48.jpg",
-      "128": "icons/SVClogo128x128.jpg"
+      "16": "icons/SVC Logo 16x16.png",
+      "32": "icons/SVC Logo 32x32.png",
+      "48": "icons/SVC Logo 48x48.png",
+      "128": "icons/SVC Logo 128x128.png"
   },
   "action": {
       "default_popup": "popup/popup.html"
   },
   "permissions": [
     "activeTab"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["popup/content.js"]
+    }
   ]
 }
