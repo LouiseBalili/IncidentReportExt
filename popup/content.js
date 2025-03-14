@@ -1,6 +1,14 @@
 const div = document.createElement('div');
 const img = document.createElement('img');
 const button = document.createElement('button');
+const fltMenu = document.createElement('div');
+const fltBtnContainer = document.createElement('div');
+const fltBtnContainer1 = document.createElement('div');
+const fltBtnContainer2 = document.createElement('div');
+const fltBtnContainer3 = document.createElement('div');
+const fltBtnSVG1 = document.createElement('svg');
+const fltBtnSVG2 = document.createElement('svg');
+const fltBtnSVG3 = document.createElement('svg');
 
 div.style.position = 'fixed';
 div.style.bottom = '20px'; 
@@ -32,15 +40,43 @@ button.style.height = "100%";
 button.style.background = "transparent";
 button.style.border = "none";
 
-// Check if image is loaded correctly
-// img.onload = function() {
-//   console.log("Image loaded successfully.");
-// };
+fltMenu.style.position = "fixed";
+fltMenu.style.bottom = "60px";
+fltMenu.style.right = "20px";
+fltMenu.style.zIndex = "10000";
 
-// img.onerror = function() {
-//   console.error("Error loading image. Check the image source.");
-//   img.alt = "Image not found"; // Provide feedback if image fails to load
-// };
+fltBtnContainer1.textContent = "Report via email";
+fltBtnContainer1.style.fontSize = "12px";
+fltBtnContainer1.style.color = "grey";
+fltBtnContainer1.style.padding = "5px 2px";
+fltBtnContainer1.style.borderRadius = "5px";
+fltBtnContainer1.style.boxShadow = "0 2px 10px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.2)";
+fltBtnContainer1.style.textAlign = "center";
+fltBtnContainer1.style.cursor = "pointer";
+
+fltBtnContainer2.textContent = "Check Website Security";
+fltBtnContainer2.style.fontSize = "12px";
+fltBtnContainer2.style.color = "grey";
+fltBtnContainer2.style.padding = "5px 2px";
+fltBtnContainer2.style.borderRadius = "5px";
+fltBtnContainer2.style.boxShadow = "0 2px 10px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.2)";
+fltBtnContainer2.style.textAlign = "center";
+fltBtnContainer2.style.cursor = "pointer";
+fltBtnContainer2.style.marginTop = "5px";
+
+fltBtnContainer3.textContent = "Real Time Protection";
+fltBtnContainer3.style.fontSize = "12px";
+fltBtnContainer3.style.color = "grey";
+fltBtnContainer3.style.padding = "5px 2px";
+fltBtnContainer3.style.borderRadius = "5px";
+fltBtnContainer3.style.boxShadow = "0 2px 10px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.2)";
+fltBtnContainer3.style.textAlign = "center";
+fltBtnContainer3.style.cursor = "pointer";
+fltBtnContainer3.style.marginTop = "5px";
+
+fltMenu.appendChild(fltBtnContainer1);
+fltMenu.appendChild(fltBtnContainer2);
+fltMenu.appendChild(fltBtnContainer3);
 
 // Adding hover effect using mouse events
 div.addEventListener('mouseenter', () => {
@@ -58,8 +94,14 @@ div.appendChild(button);
 button.appendChild(img);
 
 document.body.appendChild(div);
+document.body.appendChild(fltMenu);
 
 button.addEventListener('click', function() {
-  chrome.action.openPopup();
-  // alert("Button clicked!");
+    // Toggle the display of the floating menu
+    if (fltMenu.style.display === 'none' || fltMenu.style.display === '') {
+      fltMenu.style.display = 'block';
+    } else {
+      fltMenu.style.display = 'none';
+    }  
+
 });
