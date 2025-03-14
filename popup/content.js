@@ -6,9 +6,6 @@ const fltBtnContainer = document.createElement('div');
 const fltBtnContainer1 = document.createElement('div');
 const fltBtnContainer2 = document.createElement('div');
 const fltBtnContainer3 = document.createElement('div');
-const fltBtnSVG1 = document.createElement('svg');
-const fltBtnSVG2 = document.createElement('svg');
-const fltBtnSVG3 = document.createElement('svg');
 
 div.style.position = 'fixed';
 div.style.bottom = '20px'; 
@@ -41,13 +38,15 @@ button.style.background = "transparent";
 button.style.border = "none";
 
 fltMenu.style.position = "fixed";
-fltMenu.style.bottom = "60px";
+fltMenu.style.bottom = "70px";
 fltMenu.style.right = "20px";
 fltMenu.style.zIndex = "10000";
+fltMenu.style.display = "none";
 
-fltBtnContainer1.textContent = "Report via email";
-fltBtnContainer1.style.fontSize = "12px";
+fltBtnContainer1.textContent = "Report an Incident";
+fltBtnContainer1.style.fontSize = "13px";
 fltBtnContainer1.style.color = "grey";
+fltBtnContainer1.style.backgroundColor = "white";
 fltBtnContainer1.style.padding = "5px 2px";
 fltBtnContainer1.style.borderRadius = "5px";
 fltBtnContainer1.style.boxShadow = "0 2px 10px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.2)";
@@ -55,24 +54,26 @@ fltBtnContainer1.style.textAlign = "center";
 fltBtnContainer1.style.cursor = "pointer";
 
 fltBtnContainer2.textContent = "Check Website Security";
-fltBtnContainer2.style.fontSize = "12px";
+fltBtnContainer2.style.fontSize = "13px";
 fltBtnContainer2.style.color = "grey";
+fltBtnContainer2.style.backgroundColor = "white";
 fltBtnContainer2.style.padding = "5px 2px";
 fltBtnContainer2.style.borderRadius = "5px";
 fltBtnContainer2.style.boxShadow = "0 2px 10px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.2)";
 fltBtnContainer2.style.textAlign = "center";
 fltBtnContainer2.style.cursor = "pointer";
-fltBtnContainer2.style.marginTop = "5px";
+fltBtnContainer2.style.marginTop = "9px";
 
 fltBtnContainer3.textContent = "Real Time Protection";
-fltBtnContainer3.style.fontSize = "12px";
+fltBtnContainer3.style.fontSize = "13px";
 fltBtnContainer3.style.color = "grey";
+fltBtnContainer3.style.backgroundColor = "white";
 fltBtnContainer3.style.padding = "5px 2px";
 fltBtnContainer3.style.borderRadius = "5px";
 fltBtnContainer3.style.boxShadow = "0 2px 10px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.2)";
 fltBtnContainer3.style.textAlign = "center";
 fltBtnContainer3.style.cursor = "pointer";
-fltBtnContainer3.style.marginTop = "5px";
+fltBtnContainer3.style.marginTop = "9px";
 
 fltMenu.appendChild(fltBtnContainer1);
 fltMenu.appendChild(fltBtnContainer2);
@@ -90,6 +91,33 @@ div.addEventListener('mouseleave', () => {
   div.style.transform = 'scale(1)';      // Reset size
 });
 
+fltBtnContainer1.addEventListener('mouseenter', () => {
+  fltBtnContainer1.style.transform = 'scale(1.1)';   
+  fltBtnContainer1.style.transition = 'all 0.3s ease'; 
+});
+
+fltBtnContainer1.addEventListener('mouseleave', () => {
+  fltBtnContainer1.style.transform = 'scale(1)';     
+});
+
+fltBtnContainer2.addEventListener('mouseenter', () => {
+  fltBtnContainer2.style.transform = 'scale(1.1)';   
+  fltBtnContainer2.style.transition = 'all 0.3s ease'; 
+});
+
+fltBtnContainer2.addEventListener('mouseleave', () => {
+  fltBtnContainer2.style.transform = 'scale(1)';     
+});
+
+fltBtnContainer3.addEventListener('mouseenter', () => {
+  fltBtnContainer3.style.transform = 'scale(1.1)';   
+  fltBtnContainer3.style.transition = 'all 0.3s ease'; 
+});
+
+fltBtnContainer3.addEventListener('mouseleave', () => {
+  fltBtnContainer3.style.transform = 'scale(1)';     
+});
+
 div.appendChild(button);
 button.appendChild(img);
 
@@ -103,5 +131,16 @@ button.addEventListener('click', function() {
     } else {
       fltMenu.style.display = 'none';
     }  
+});
 
+fltBtnContainer1.addEventListener('click', function() {
+
+});
+
+fltBtnContainer2.addEventListener('click', () => {
+  window.open('/information/checkValidity.html', '_blank', 'width=500, height=500, top=150');
+});
+
+fltBtnContainer3.addEventListener('click', () => {
+  window.open('/information/RTimeProtect.html', '_blank', 'width=500, height=500, top=150');
 });
