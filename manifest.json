@@ -12,8 +12,16 @@
   "action": {
       "default_popup": "popup/popup.html"
   },
-  "permissions": [
-    "activeTab"
+  "permissions": ["activeTab"],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "images/*"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
   ],
   "content_scripts": [
     {

@@ -9,7 +9,8 @@ const modal = document.createElement('div');
 const modalContent = document.createElement('div');
 const closeModalButton = document.createElement('span');
 const iframe = document.createElement('iframe');
-const imgURL = chrome.runtime.getURL(images/informationTab.jpg);
+const imgURL = chrome.runtime.getURL('images/informationTab.jpg');
+const irIMG = document.createElement('img');
 
 div.style.position = 'fixed';
 div.style.bottom = '20px'; 
@@ -177,6 +178,15 @@ modalContent.style.maxWidth = '600px';
 modalContent.style.margin = 'auto';
 modalContent.style.position = 'relative';
 
+irIMG.src = imgURL;
+irIMG.style.height = 'auto';
+irIMG.style.marginTop = '-15px';
+irIMG.style.marginBottom = '5px';
+irIMG.alt = 'information tab';
+irIMG.className = 'informationTab';
+irIMG.id = 'informationTab';
+
+modal.appendChild(irIMG);
 modalContent.appendChild(closeModalButton);
 modal.appendChild(modalContent);
 document.body.appendChild(modal);
