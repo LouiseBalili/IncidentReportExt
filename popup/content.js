@@ -2,10 +2,14 @@ const div = document.createElement('div');
 const img = document.createElement('img');
 const button = document.createElement('button');
 const fltMenu = document.createElement('div');
-const fltBtnContainer = document.createElement('div');
 const fltBtnContainer1 = document.createElement('div');
 const fltBtnContainer2 = document.createElement('div');
 const fltBtnContainer3 = document.createElement('div');
+const modal = document.createElement('div');
+const modalContent = document.createElement('div');
+const closeModalButton = document.createElement('span');
+const iframe = document.createElement('iframe');
+const imgURL = chrome.runtime.getURL(images/informationTab.jpg);
 
 div.style.position = 'fixed';
 div.style.bottom = '20px'; 
@@ -154,14 +158,68 @@ button.addEventListener('click', function() {
     }  
 });
 
-fltBtnContainer1.addEventListener('click', function() {
+// Modal Creation
+modal.style.display = 'none';
+modal.style.position = 'fixed';
+modal.style.top = '0';
+modal.style.left = '0';
+modal.style.width = '100vw';
+modal.style.height = '100vh';
+modal.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+modal.style.zIndex = '10001';
+modal.style.justifyContent = 'center';
+modal.style.alignItems = 'center';
+modal.style.display = 'none'; // Hide initially
 
+modalContent.style.backgroundColor = 'white';
+modalContent.style.padding = '20px';
+modalContent.style.maxWidth = '600px';
+modalContent.style.margin = 'auto';
+modalContent.style.position = 'relative';
+
+modalContent.appendChild(closeModalButton);
+modal.appendChild(modalContent);
+document.body.appendChild(modal);
+
+closeModalButton.addEventListener('click', () => {
+  modal.style.display = 'none'; // Close the modal when 'X' is clicked
 });
 
+fltBtnContainer1.addEventListener('click', function() {
+modal.style.display = "flex";
+modalContent.innerHTML = `<span id="closeModalButton" style="position: absolute; top: 10px; right: 10px; font-size: 20px; cursor: pointer;">X</span> <div class="extensionModal" style="margin: 10px; line-height: 0;"> <div class="extensionLogo" style="diplay: inline-block"> <img src="${chrome.extension.getURL('images/SVCLogo.png')}" style="display: inline; height: 30px; width: 50px;" alt="SVC logo" class="SVCLogo"/> <p class="logoTitle" style="font-weight: bold; font-size: 24px; color: #1263c6; display: inline; margin-left: 5px;">Select <y style="color: #ffa22a;">V</y>oiceCom</p> </div> <h4 style="text-align: center; padding: 5px;">Report an Incident</h4> <img src="${chrome.extension.getURL(images/informationTab.jpg)}" style="height: auto; margin-top: -15px; margin-bottom: 5px;" alt="information tab" class="informationTab" /> <div class="buttonContainer"> <button type="button" class="btns_button">Information</button> <button type="button" class="btns_button">Physical</button> </div> </div>`;
+
+document.getElementById('closeModalButton').addEventListener('click', () => {
+  modal.style.display = "none";
+  });
+});
+
+// Assuming your floating button containers are set up already
 fltBtnContainer2.addEventListener('click', () => {
-  window.open('//information/checkValidity.html', '_blank', 'width=500, height=500, top=150');
+ 
 });
 
 fltBtnContainer3.addEventListener('click', () => {
-  window.open('information/RTimeProtect.html', '_blank', 'width=500, height=500, top=150');
+modal.style.display = "flex";
+
+modalContent.innerHTML = '<span id="closeModalButton" style="position: absolute; top: 10px; right: 10px; font-size: 20px; cursor: pointer;">X</span> <div class="extensionLogo" style="width: auto; margin: auto; display: flex; justify-content: center; align-items: center; flex-direction: column"> <img src="/images/SVC Logo.png" style="height: 50px; width: 80px; margin-bottom: 0;" alt="SVC logo" class="SVCLogo"/> <p class="logoTitle" style="font-weight: bold; font-size: 24px; color: #1263c6; margin-top: 0;">Select <y style="color: #ffa22a;">V</y>oiceCom</p> <div class="toggle-label" style="font-size: 20px; margin-bottom: 25px;">Toggle Real Time Protection</div> <label class="toggle-switch" style="position: relative; display: inline-block; width: 80px; height: 40px; cursor: pointer;"> <input type="checkbox"> <div class="toggle-switch-background" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: #ddd; border-radius: 20px; box-shadow: inset 0 0 0 2px #ccc; transition: background-color 0.3s ease-in-out;"> <div class="toggle-switch-handle" style="position: absolute; top: 5px; left: 5px; width: 30px; height: 30px; background-color: #fff; border-radius: 50%; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); transition: transform 0.3s ease-in-out;"></div> </div></label></div>';
+
+document.getElementById('closeModalButton').addEventListener('click', () => {
+  modal.style.display = 'none';
+  });
+
+document.getElementById('closeModalButton').addEventListener('mouseenter', () => {
+    closeModalButton.style.transform = 'scale(1.1)';   
+    closeModalButton.style.transition = 'all 0.3s ease'; 
+    closeModalButton.style.backgroundColor = 'red';
+  });
+
+document.getElementById('closeModalButton').addEventListener('mouseleave', () => {
+    closeModalButton.style.transform = 'scale(1)';   
+    closeModalButton.style.backgroundColor = 'none';  
+  });
 });
+
+
+
+
