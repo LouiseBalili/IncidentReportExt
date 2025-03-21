@@ -9,12 +9,14 @@ const modal = document.createElement('div');
 const modalContent = document.createElement('div');
 const closeModalButton = document.createElement('span');
 const iframe = document.createElement('iframe');
-const imgURL = chrome.runtime.getURL('images/informationTab.jpg');
+const logoImgUrl = chrome.runtime.getURL('images/SVCLogo.png');
+const logoIMG = document.createElement('img');
+const irImgUrl = chrome.runtime.getURL('images/informationTab.jpg');
 const irIMG = document.createElement('img');
 
 div.style.position = 'fixed';
 div.style.bottom = '20px'; 
-div.style.right = '20px'; 
+div.style.right = '30px'; 
 div.style.zIndex = '9999'; 
 div.style.cursor = 'pointer';
 div.style.width = "36px";
@@ -178,7 +180,8 @@ modalContent.style.maxWidth = '600px';
 modalContent.style.margin = 'auto';
 modalContent.style.position = 'relative';
 
-irIMG.src = imgURL;
+irIMG.src = irImgUrl;
+irIMG.style.maxWidth = '180px';
 irIMG.style.height = 'auto';
 irIMG.style.marginTop = '-15px';
 irIMG.style.marginBottom = '5px';
@@ -186,22 +189,93 @@ irIMG.alt = 'information tab';
 irIMG.className = 'informationTab';
 irIMG.id = 'informationTab';
 
-modal.appendChild(irIMG);
+logoIMG.src = logoImgUrl;
+logoIMG.style.height = '32px';
+logoIMG.style.width = '53px';
+
+closeModalButton.style.position = 'absolute';
+closeModalButton.style.top = '10px';
+closeModalButton.style.right = '15px';
+closeModalButton.style.fontSize = '20px';
+closeModalButton.style.cursor = 'pointer';
+closeModalButton.textContent = 'X';
+
 modalContent.appendChild(closeModalButton);
 modal.appendChild(modalContent);
 document.body.appendChild(modal);
 
+function clearModalContent() {
+  modalContent.innerHTML = '';
+};
+
 closeModalButton.addEventListener('click', () => {
   modal.style.display = 'none'; // Close the modal when 'X' is clicked
+  clearModalContent();
 });
 
 fltBtnContainer1.addEventListener('click', function() {
 modal.style.display = "flex";
-modalContent.innerHTML = `<span id="closeModalButton" style="position: absolute; top: 10px; right: 10px; font-size: 20px; cursor: pointer;">X</span> <div class="extensionModal" style="margin: 10px; line-height: 0;"> <div class="extensionLogo" style="diplay: inline-block"> <img src="${chrome.extension.getURL('images/SVCLogo.png')}" style="display: inline; height: 30px; width: 50px;" alt="SVC logo" class="SVCLogo"/> <p class="logoTitle" style="font-weight: bold; font-size: 24px; color: #1263c6; display: inline; margin-left: 5px;">Select <y style="color: #ffa22a;">V</y>oiceCom</p> </div> <h4 style="text-align: center; padding: 5px;">Report an Incident</h4> <img src="${chrome.extension.getURL(images/informationTab.jpg)}" style="height: auto; margin-top: -15px; margin-bottom: 5px;" alt="information tab" class="informationTab" /> <div class="buttonContainer"> <button type="button" class="btns_button">Information</button> <button type="button" class="btns_button">Physical</button> </div> </div>`;
 
-document.getElementById('closeModalButton').addEventListener('click', () => {
-  modal.style.display = "none";
-  });
+clearModalContent();
+
+const extensionModal = document.createElement('div');
+extensionModal.style.lineHeight = '0';
+extensionModal.style.display = 'inline';
+extensionModal.classList.add('extensionModal');
+
+const paddingHeaderDiv = document.createElement('div');
+paddingHeaderDiv.style.height = '25px';
+paddingHeaderDiv.style.width = '100%';
+
+const extensionLogo = document.createElement('div');
+
+const logoTitle = document.createElement('p');
+logoTitle.classList.add('logoTitle');
+logoTitle.style.fontWeight = 'bold';
+logoTitle.style.fontSize = '22px';
+logoTitle.style.marginLeft = '5px';
+logoTitle.style.position = "relative";
+logoTitle.innerHTML = '<blue style="color: #1263c6;"> Select <y style="color: #ffa22a; display: inline;">V</y>oiceCom</blue>';
+
+// extensionLogo.appendChild(logoIMG);
+extensionLogo.appendChild(logoTitle);
+
+const irHeader = document.createElement('div');
+irHeader.style.display = 'inline-block';
+const irHeaderTitle = document.createElement('h4');
+irHeaderTitle.style.textAlign = 'center';
+irHeaderTitle.style.padding = '5px';
+irHeaderTitle.style.fontWeight = '1000';
+irHeaderTitle.style.marginBottom = "5px";
+irHeaderTitle.textContent = 'Report an Incident';
+irHeaderTitle.style.position = 'relative';
+
+irHeader.appendChild(irHeaderTitle);
+irHeader.appendChild(irIMG);
+
+const btnContainer = document.createElement('div');
+btnContainer.classList.add('btnContainer');
+
+const btnInfo = document.createElement('button');
+btnInfo.type = "button";
+btnInfo.classList.add('btns_button');
+btnInfo.textContent = 'Information';
+
+const btnPhys = document.createElement('button');
+btnPhys.type = 'button';
+btnPhys.classList.add('btns_button');
+btnPhys.textContent = 'Physical';
+
+btnContainer.appendChild(btnInfo);
+btnContainer.appendChild(btnPhys);
+extensionModal.appendChild(extensionLogo);
+extensionModal.appendChild(irHeader);
+extensionModal.appendChild(btnContainer);
+
+modalContent.appendChild(closeModalButton);
+modalContent.appendChild(paddingHeaderDiv);
+modalContent.appendChild(extensionModal);
+modal.appendChild(modalContent);
 });
 
 // Assuming your floating button containers are set up already
