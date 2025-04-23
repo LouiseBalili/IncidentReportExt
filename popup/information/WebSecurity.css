@@ -1,0 +1,89 @@
+body {
+    font-family: 'Poppins';
+}
+
+.checkSecurity {
+    margin: 10px;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+.subtext {
+    margin-top: -10px;
+    font-size: 12px;
+}
+
+hr {
+    margin-top: -10px;
+}
+
+.directions {
+    font-size: 12px;
+    font-weight: 900px;
+    margin-top: -25px;
+}
+
+.urlInputCheck {
+    width: 40%;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.disclaimer {
+    font-size: 12px;
+    margin-top: 5px;
+    color: red;
+    font-style: italic;
+}
+
+.resultsContainer {
+    margin: 10px;
+}
+
+#resultsReadonly {
+    width: 40%;
+    height: 30px;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 14px;
+    margin-bottom: 5px;
+    margin-top: -5px;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+    .urlInputCheck {
+        width: 80%;
+    }
+
+    #resultsReadonly {
+        width: 80%;
+    }
+  }
+
+@media only screen and (min-width: 600px) {
+    .urlInputCheck {
+        width: 60%;
+    }
+
+    #resultsReadonly {
+        width: 60%;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .urlInputCheck {
+        width: 40%;
+    }
+
+    #resultsReadonly {
+        width: 40%;
+    }
+}
