@@ -56,4 +56,51 @@ document.addEventListener("DOMContentLoaded", function() {
         const gmailURL = `https://mail.google.com/mail/?view=cm&fs=1&to=${recipient}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         window.open(gmailURL, '_blank', 'width=750, height=750, top=75, scrollbar=yes')
     });
+
+    const checkURL = document.getElementById('checkURL');
+
+    checkURL.addEventListener('click', async () => {
+        const url = document.getElementById('urlInputCheck').value.trim();
+        const apiKey = "AIzaSyDkwMpa3pNPyqrZoo6D0Cx8mUGJNH6b4Dw"; 
+
+        const requestBody = {
+            client: {
+                clientId: "TestClient",
+                clientVersion: "1.5.2"
+            },
+            threatInfo: {
+                threatTypes: ["MALWARE", "SOCIAL_ENGINEERING", "UNWANTED_SOFTWARE", "POTENTIALLY_HARMFUL_APPLICATION"],
+                platformTypes: ["ANY_PLATFORM"],
+                threatEntryTypes: ["URL"],
+                threatEntries: [{ url }]
+            }
+        };
+        
+        const resultDiv = document.getElementById('result');
+
+        try {
+            const response = await fetch(`https://safebrowsing.googleapis.com/v4/threatMatches:find?key=${apiKey}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(requestBody)
+            });
+
+            if (!response.ok) {
+                throw new Error(`API Error: ${response.status} - ${response.statusText}`);
+            }
+
+            const data = await response.json();
+            // console.log("Safe Browsing API Response:", data); 
+
+            if (data && data.matches && data.matches.length > 0) {
+                resultDiv.innerHTML = `<span class="text-danger">⚠️ This site is flagged as unsafe!</span>`;
+            } else {
+                resultDiv.innerHTML = `<span class="text-success">✅ This site appears to be safe.</span>`;
+            }
+        } catch (error) {
+            resultDiv.innerHTML = `<span class="text-warning">❌ Error: ${error.message}</span>`;
+        }
+    });
+
 });
+
