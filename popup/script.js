@@ -40,7 +40,8 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     document.getElementById('checkURL').addEventListener('click', () => {
-        window.open('information/checkValidity.html', '_blank', 'width=500, height=500, top=150');
+        // window.open('/popup/information/checkValidity.html', '_blank', 'width=500, height=500, top=150');
+        chrome.tabs.create({ url: '/popup/information/checkValidity.html' });
     });
 
     document.getElementById('RTimeProtect').addEventListener('click', () => {
