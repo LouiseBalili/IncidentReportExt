@@ -11,6 +11,15 @@ body {
     flex-direction: column;
  }
 
+ .RTPContent {
+    width: auto;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+ }
+
  .SVCLogo {
     height: 50px;
     width: 80px;
@@ -101,4 +110,22 @@ body {
   .toggle-switch input[type="checkbox"]:checked + .toggle-switch-background .toggle-switch-handle {
     transform: translateX(40px);
   }
-  
+
+  .toggle-status-active {
+    color:green;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+
+  .toggle-status-inactive {
+    color: red;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+
+  .RTPbody {
+    margin: 27px;
+    margin-top: 45px;
+    text-align: center;
+    margin-top: 20px;
+  }

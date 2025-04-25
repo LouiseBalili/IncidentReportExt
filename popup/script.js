@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Event listener for "RTimeProtect"
     document.getElementById('RTimeProtect').addEventListener('click', () => {
-        window.open('information/RTimeProtect.html', '_blank', 'width=500, height=500, top=150');
+        window.open('information/RTimeProtect.html', '_blank', 'width=400, height=400, top=150');
     });
 
     // Event listener for "Send Mail Physical"
