@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Event listener for "Check URL"
     document.getElementById('checkURL').addEventListener('click', () => {
-        window.open('information/checkValidity.html', '_blank', 'width=500, height=500, top=150');
+        window.open('information/checkValidity.html', '_blank', 'width=500, height=450, top=150');
     });
 
     // Event listener for "RTimeProtect"

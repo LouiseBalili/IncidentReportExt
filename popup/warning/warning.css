@@ -1,0 +1,40 @@
+body {
+    background-color: #ffc0c0;
+    font-family: 'Poppins';
+}
+
+.warningContent {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#goBack {
+    background-color: yellow;
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+#goBack:hover {
+    background-color: #ffe347;
+}
+
+@media only screen and (min-height: 420px) {
+    #proceed {
+        position: fixed; /* Fix the element to the bottom of the viewport */
+        bottom: 50px; /* Align it to the bottom */
+        left: 0; /* Stretch it across the width */
+        width: 100%; /* Full width */
+        padding: 5px 0; /* Optional: Add padding */
+        text-align: center; /* Center the content */
+    }
+}
