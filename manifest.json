@@ -12,21 +12,24 @@
   "action": {
       "default_popup": "popup/popup.html"
   },
-  "permissions": ["tabs", "activeTab", "*://*/*"],
+  "permissions": ["tabs", "activeTab"],
   "web_accessible_resources": [
     {
       "resources": [
-        "images/*","popup/script.js"
+        "images/*",
+        "popup/script.js",
+        "/popup/information/*"
       ],
       "matches": [
-        "<all_urls>"
+        "<all_urls>",
+        "https://*/*"
       ]
     }
   ],
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["popup/script.js"],
+      "js": ["popup/script.js", "popup/information/WebSecurity.js"],
       "run_at": "document_idle"
     }
   ]
