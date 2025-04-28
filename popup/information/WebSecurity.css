@@ -81,6 +81,15 @@ hr {
     color: #ffa22a;
  }
 
+ .footer {
+    width: 100%;
+    background-color: #ccc;
+    font-size: 12px;
+    margin-bottom: -5px;
+    margin-top: -15px;
+    padding: 5px
+}
+
 @media only screen and (max-width: 450px) {
     .urlInputCheck {
         width: 90%;
@@ -99,6 +108,7 @@ hr {
     .extensionLogo {
         display: none; /* Hide the logo on small screens */
     }
+
 }
 
 @media only screen and (max-width: 600px) {

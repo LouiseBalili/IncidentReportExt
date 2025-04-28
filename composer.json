@@ -1,0 +1,10 @@
+{
+    "require": {
+        "dominykasgel/google-safe-browsing": "^1.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "kylekatarnls/update-helper": true
+        }
+    }
+}

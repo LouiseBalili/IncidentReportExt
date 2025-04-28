@@ -149,7 +149,7 @@
     color: rgb(9, 111, 158);
  }
 
- .physical {
+ .physical_btns {
    display: none;
    margin-top: 7px;
    align-items: center;
@@ -169,3 +169,10 @@
     background-color: #f3f3f3;
  }
 
+ .phoneSVG {
+   width: 20px;
+   height: 20px;;
+   display: inline;
+   margin-bottom: -5px;
+   color: rgb(9, 111, 158);
+ }

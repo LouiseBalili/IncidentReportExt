@@ -13,13 +13,13 @@ document.addEventListener("DOMContentLoaded", function () {
             if (buttonText === "information") {
                 physicalTab.style.display = 'none';
                 informationTab.style.display = 'block';
-                document.querySelector(".physical").style.display = 'none';
+                document.querySelector(".physical_btns").style.display = 'none';
                 document.querySelector(".information_btns").style.display = 'block';
             } else if (buttonText === "physical") {
                 physicalTab.style.display = 'block';
                 informationTab.style.display = 'none';
                 document.querySelector(".information_btns").style.display = 'none';
-                document.querySelector(".physical").style.display = 'block';
+                document.querySelector(".physical_btns").style.display = 'block';
             }
         });
     });
@@ -33,9 +33,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // Event listener for "Send Mail Info"
     document.getElementById('sendMailInfo').addEventListener('click', () => {
         const recipient = 'it@ebcallcenter.com';
+        const ccRecipient = 'compliance@selectvoicecom.com'
         const subject = 'Information Security Incident - (Specify Reason for Email/Report)';
         const body = '';
-        const gmailURL = `https://mail.google.com/mail/?view=cm&fs=1&to=${recipient}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        const gmailURL = `https://mail.google.com/mail/?view=cm&fs=1&to=${recipient}&cc=${ccRecipient}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         window.open(gmailURL, '_blank', 'width=750, height=750, top=75, scrollbars=yes');
     });
 
@@ -56,6 +57,11 @@ document.addEventListener("DOMContentLoaded", function () {
         const body = '';
         const gmailURL = `https://mail.google.com/mail/?view=cm&fs=1&to=${recipient}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         window.open(gmailURL, '_blank', 'width=750, height=750, top=75, scrollbar=yes');
+    });
+
+    // Event listener for "Contact Number List
+    document.getElementById('contactNum').addEventListener('click', () => {
+       window.open('information/contactList.html', '_blank', 'width=600, height=600, top=150'); 
     });
 
     const CWSCheckURL = document.getElementById('CWSCheckURL');
