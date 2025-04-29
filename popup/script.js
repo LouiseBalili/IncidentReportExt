@@ -42,12 +42,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Event listener for "Check URL"
     document.getElementById('checkURL').addEventListener('click', () => {
-        window.open('information/checkValidity.html', '_blank', 'width=500, height=450, top=150');
+        window.open('information/urlChecker/checkValidity.html', '_blank', 'width=500, height=450, top=150');
     });
 
     // Event listener for "RTimeProtect"
-    document.getElementById('RTimeProtect').addEventListener('click', () => {
-        window.open('information/RTimeProtect.html', '_blank', 'width=400, height=400, top=150');
+    document.getElementById('phishingGuideline').addEventListener('click', () => {
+        window.open('information/phishingGuideline.html', '_blank', 'width=700, height=700, top=150');
     });
 
     // Event listener for "Send Mail Physical"

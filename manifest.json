@@ -18,8 +18,8 @@
       "resources": [
         "images/*",
         "popup/script.js",
-        "/popup/information/*",
-        "/popup/warning/*",
+        "popup/information/phishingGuideline/*",
+        "/popup/information/urlChecker/*",
         "/popup/physical/*"
       ],
       "matches": [
@@ -32,10 +32,8 @@
     {
       "matches": ["<all_urls>"],
       "js": ["popup/script.js",
-      "popup/information/WebSecurity.js",
-      "popup/information/RTPscript.js",
-      "popup/warning/warning.js",
-      "popup/physical/contactlList.js"
+      "popup/information/urlChecker/WebSecurity.js",
+      "popup/physical/contactList.js"
     ],
       "type": "module",
       "run_at": "document_idle"
