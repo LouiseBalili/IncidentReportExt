@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Event listener for "RTimeProtect"
     document.getElementById('phishingGuideline').addEventListener('click', () => {
-        window.open('information/phishingGuideline.html', '_blank', 'width=700, height=700, top=150');
+        window.open('information/phishingGuideline/phishGuide.html', '_blank', 'width=550, height=650, top=125');
     });
 
     // Event listener for "Send Mail Physical"
