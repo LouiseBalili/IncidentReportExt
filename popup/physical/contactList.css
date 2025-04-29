@@ -53,7 +53,7 @@ body {
     padding-left: 0;
  }
 
- .contactListItems ul {
+ .contactListItems .contactCard {
     list-style: none;
     padding: 20px;
     border: 1px solid #e0e0e0;
@@ -64,29 +64,35 @@ body {
     position: relative;
  }
 
- ul img {
+ .contactCard img {
     width: 70px;
     height: 70px;
     border-radius: 50%;
     margin-right: 10px;
  }
 
- ul {
+ .contactCard {
     display: flex;
     align-items: center;
+    justify-content: space-between;
  }
 
- ul label {
-    display: flex;
-    justify-content: flex-end;
+ .contactCard .contactTitle {
+      text-align: center;
+      display: flex;
+      align-items: center;
  }
 
- ul svg {
+ .contactCard svg {
     width: 20px;
     height: 20px;
     margin-left: auto;
     color: #929292;
     cursor: pointer;
+ }
+
+ .contactCard .erufSVGUp {
+   display: none;
  }
 
  .ulLogo_police  {
@@ -113,18 +119,29 @@ body {
  }
 
  .contact_dropdown {
-      position: absolute;
-      background-color: white;
-      z-index: 1;
       width: 100%;
-      margin: auto;
+      margin-left: -15px;
  }
 
  .contact_dropdown li {
+   width: 95%;
    display: flex;
    justify-content: space-between;
    border: 1px solid #e0e0e0;
+   background-color: white;
    box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2); 
    border-radius: 5px;
    padding: 10px;
+ }
+
+ .contact_dropdown svg {
+   width: 20px;
+    height: 20px;
+    color: #929292;
+ }
+
+ .listItemContainer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
  }

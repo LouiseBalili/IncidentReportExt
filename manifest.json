@@ -19,7 +19,8 @@
         "images/*",
         "popup/script.js",
         "/popup/information/*",
-        "/popup/warning/*"
+        "/popup/warning/*",
+        "/popup/physical/*"
       ],
       "matches": [
         "<all_urls>",
@@ -33,7 +34,9 @@
       "js": ["popup/script.js",
       "popup/information/WebSecurity.js",
       "popup/information/RTPscript.js",
-      "popup/warning/warning.js"],
+      "popup/warning/warning.js",
+      "popup/physical/contactlList.js"
+    ],
       "type": "module",
       "run_at": "document_idle"
     }

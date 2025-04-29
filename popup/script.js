@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Event listener for "Contact Number List
     document.getElementById('contactNum').addEventListener('click', () => {
-       window.open('information/contactList.html', '_blank', 'width=600, height=600, top=150'); 
+       window.open('physical/contactList.html', '_blank', 'width=600, height=600, top=150'); 
     });
 
     const CWSCheckURL = document.getElementById('CWSCheckURL');
