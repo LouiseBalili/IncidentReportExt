@@ -1,0 +1,169 @@
+body {
+    font-family: 'Poppins';
+}
+
+.checkSecurity {
+    margin: 10px;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+.subtext {
+    margin-top: -10px;
+    font-size: 12px;
+}
+
+hr {
+    margin-top: -10px;
+}
+
+.directions {
+    font-size: 12px;
+    font-weight: 900px;
+    margin-top: -25px;
+}
+
+.urlInputCheck {
+    width: 40%;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.disclaimer {
+    font-size: 12px;
+    margin-top: 5px;
+    color: red;
+    font-style: italic;
+}
+
+.resultsContainer {
+    margin: 10px;
+}
+
+#resultsReadonly {
+    width: 40%;
+    height: 30px;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 14px;
+    margin-bottom: 5px;
+    margin-top: -5px;
+}
+
+.extensionLogo {
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+ }
+
+ .SVCLogo {
+    height: 50px;
+    width: 80px;
+    margin-bottom: 0;
+ }
+
+ .logoTitle {
+    font-weight: bold;
+    font-size: 24px;
+    color: #1263c6;
+    margin-top: 0;
+ }
+
+ y {
+    color: #ffa22a;
+ }
+
+ .footer {
+    width: 100%;
+    background-color: #ccc;
+    font-size: 12px;
+    margin-bottom: -5px;
+    margin-top: -15px;
+    padding: 5px
+}
+
+@media only screen and (max-width: 450px) {
+    .urlInputCheck {
+        width: 90%;
+    }
+
+    #resultsReadonly {
+        width: 90%;
+    }
+
+    .extensionLogo {
+       display: none; /* Hide the logo on small screens */
+    }
+}
+
+@media only screen and (max-height: 390px) {
+    .extensionLogo {
+        display: none; /* Hide the logo on small screens */
+    }
+
+}
+
+@media only screen and (max-width: 600px) {
+    .urlInputCheck {
+        width: 80%;
+    }
+
+    #resultsReadonly {
+        width: 80%;
+    }
+
+    .extensionLogo {
+        position: fixed; /* Fix the element to the bottom of the viewport */
+        bottom: 0; /* Align it to the bottom */
+        left: 0; /* Stretch it across the width */
+        width: 100%; /* Full width */
+        padding: 5px 0; /* Optional: Add padding */
+        text-align: center; /* Center the content */
+    }
+  }
+
+@media only screen and (min-width: 600px) {
+    .urlInputCheck {
+        width: 60%;
+    }
+
+    #resultsReadonly {
+        width: 60%;
+    }
+
+    .extensionLogo {
+        position: fixed; /* Fix the element to the bottom of the viewport */
+        bottom: 0; /* Align it to the bottom */
+        left: 0; /* Stretch it across the width */
+        width: 100%; /* Full width */
+        padding: 5px 0; /* Optional: Add padding */
+        text-align: center; /* Center the content */
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .urlInputCheck {
+        width: 40%;
+    }
+
+    #resultsReadonly {
+        width: 40%;
+    }
+
+    .extensionLogo {
+        position: fixed; /* Fix the element to the bottom of the viewport */
+        bottom: 0; /* Align it to the bottom */
+        left: 0; /* Stretch it across the width */
+        width: 100%; /* Full width */
+        padding: 5px 0; /* Optional: Add padding */
+        text-align: center; /* Center the content */
+    }
+}
