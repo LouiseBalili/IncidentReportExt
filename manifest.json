@@ -12,7 +12,7 @@
   "action": {
       "default_popup": "popup/popup.html"
   },
-  "permissions": ["tabs", "activeTab"],
+  "permissions": ["tabs", "activeTab", "scripting"],
   "host_permissions": ["https://mail.google.com/*"],
   "web_accessible_resources": [
     {
@@ -24,7 +24,6 @@
         "/popup/physical/*"
       ],
       "matches": [
-        "<all_urls>",
         "https://*/*",
         "https://mail.google.com/*"
       ]
@@ -32,13 +31,12 @@
   ],
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
+      "matches": ["https://mail.google.com/*"],
       "js": ["popup/script.js",
       "popup/information/urlChecker/WebSecurity.js",
       "popup/physical/contactList.js",
       "popup/mailButton.js"
     ],
-      "type": "module",
       "run_at": "document_idle"
     }
   ]
