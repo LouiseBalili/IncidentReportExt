@@ -3,7 +3,7 @@ const addCustomButton = () => {
     if (document.querySelector('#svc-custom-button')) return;
   
     // Gmail's subject/title is in an element with the `h2` tag and `data-legacy-thread-id`
-    const toolBarContainer = document.querySelector('div.G-tF');
+    const toolBarContainer = document.querySelector('div.bHJ');
     if (!toolBarContainer) {
         console.log('Toolbar container not found!');
         return;
