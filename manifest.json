@@ -14,6 +14,10 @@
   },
   "permissions": ["tabs", "activeTab", "scripting"],
   "host_permissions": ["https://mail.google.com/*"],
+  "oauth2": {
+    "client_id": "804357090273-khsrgv3l37cjh7tl5vd9plt97321fae7.apps.googleusercontent.com",
+    "scopes": ["https://www.googleapis.com/auth/gmail.modify"]
+  },
   "web_accessible_resources": [
     {
       "resources": [
