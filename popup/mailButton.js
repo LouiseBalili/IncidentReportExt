@@ -45,7 +45,7 @@ const createModal = () => {
     modalOverlay.id = 'svc-confirm-modal';
     modalOverlay.style.marginTop = '25vh';
     modalOverlay.style.width = '500px';
-    modalOverlay.style.height = '350px';
+    modalOverlay.style.height = '330px';
     modalOverlay.style.backgroundColor = 'white';
     modalOverlay.style.display = 'flex';
     modalOverlay.style.alignItems = 'center';
@@ -68,13 +68,17 @@ const createModal = () => {
     modalImg.alt = 'Attention Sign';
     modalImg.style.width = '130px';
     modalImg.style.height = '80px';
-    modalImg.style.marginTop = '-30px';
+
+    const modalContentTitleParagraph = document.createElement('p');
+    modalContentTitleParagraph.innerHTML = 'Are you sure you want to report this email?';
+    modalContentTitleParagraph.style.fontSize = '20px';
+    modalContentTitleParagraph.style.fontWeight = 'bold';
+    modalContentTitleParagraph.style.marginTop = '45px';
+    modalContentTitleParagraph.style.marginBottom = '-5px';
 
     const modalContentParagraph = document.createElement('p');
-    modalContentParagraph.innerHTML = 'Are you sure you want to report this email?';
-    modalContentParagraph.style.fontSize = '20px';
-    modalContentParagraph.style.fontWeight = 'bold';
-    modalContentParagraph.style.marginTop = '60px';
+    modalContentParagraph.innerHTML = '(Mail will be forwarded to IT team)';
+    modalContentParagraph.style.fontStyle = 'italic';
 
     const modalBtnContainer = document.createElement('div');
     modalBtnContainer.style.display = 'flex';
@@ -92,7 +96,7 @@ const createModal = () => {
 
     const modalContentButtonNo = document.createElement('button');
     modalContentButtonNo.style.padding = '10px 30px';
-    modalContentButtonYes.style.border = '1px solid #7c7c7c';
+    modalContentButtonNo.style.border = '1px solid #7c7c7c';
     modalContentButtonNo.style.borderRadius = '10px';
     modalContentButtonNo.style.backgroundColor = 'white';
     modalContentButtonNo.style.color = 'black';
@@ -102,11 +106,37 @@ const createModal = () => {
     modalBtnContainer.appendChild(modalContentButtonYes);
     modalBtnContainer.appendChild(modalContentButtonNo);
     modalContent.appendChild(modalImg);
+    modalContent.appendChild(modalContentTitleParagraph);
     modalContent.appendChild(modalContentParagraph);
     modalContent.appendChild(modalBtnContainer);
     modalOverlay.appendChild(modalContent);
     backgroundOverlay.appendChild(modalOverlay);
     document.body.appendChild(backgroundOverlay);
+
+    modalContentButtonYes.addEventListener('mouseenter', () => {
+        modalContentButtonYes.style.transform = 'scale(1.05)';
+        modalContentButtonYes.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
+        modalContentButtonYes.style.transition = 'all 0.2s ease';
+        modalContentButtonYes.style.cursor = 'pointer';
+    });
+
+    modalContentButtonYes.addEventListener('mouseleave', () => {
+        modalContentButtonYes.style.transform = 'scale(1)';
+        modalContentButtonYes.style.boxShadow = 'none';
+    });
+
+    modalContentButtonNo.addEventListener('mouseenter', () => {
+        modalContentButtonNo.style.transform = 'scale(1.05)';
+        modalContentButtonNo.style.backgroundColor = '#e0e0e0';
+        modalContentButtonNo.style.transition = 'all 0.2s ease';
+        modalContentButtonNo.style.cursor = 'pointer';
+    });
+
+    modalContentButtonNo.addEventListener('mouseleave', () => {
+        modalContentButtonNo.style.transform = 'scale(1)';
+        modalContentButtonNo.style.backgroundColor = 'white';
+    });
+
 
      return new Promise((resolve) => {
        setTimeout(() => {
