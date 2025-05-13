@@ -1,21 +1,147 @@
+const createModal = () => {
+    if (document.querySelector('#svc-confirm-modal')) return;
+
+    if (!document.getElementById('svc-modal-animation-style')) {
+    const style = document.createElement('style');
+    style.id = 'svc-modal-animation-style';
+    style.textContent = `
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .svc-fade-in {
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0.95); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .svc-modal-pop {
+            animation: popIn 0.2s ease-out;
+        }
+    `;
+    document.head.appendChild(style);
+    }   
+
+
+    const backgroundOverlay = document.createElement('div');
+    backgroundOverlay.id = "svc-modal-background";
+    backgroundOverlay.style.position = 'fixed';
+    backgroundOverlay.style.top = '0';
+    backgroundOverlay.style.left = '0';
+    backgroundOverlay.style.width = '100vw';
+    backgroundOverlay.style.height = '100vh';
+    backgroundOverlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+    backgroundOverlay.style.display = 'flex';
+    backgroundOverlay.style.alignitems = 'center';
+    backgroundOverlay.style.justifyContent = 'center';
+    backgroundOverlay.style.zIndex = '9998';
+    backgroundOverlay.classList.add('svc-fade-in');
+
+    const modalOverlay = document.createElement('div');
+    modalOverlay.id = 'svc-confirm-modal';
+    modalOverlay.style.marginTop = '25vh';
+    modalOverlay.style.width = '500px';
+    modalOverlay.style.height = '350px';
+    modalOverlay.style.backgroundColor = 'white';
+    modalOverlay.style.display = 'flex';
+    modalOverlay.style.alignItems = 'center';
+    modalOverlay.style.justifyContent = 'center';
+    modalOverlay.style.border = '1px solid transparent';
+    modalOverlay.style.borderRadius = '20px';
+    modalOverlay.style.zIndex = '9999';
+    modalOverlay.classList.add('svc-modal-pop');
+
+    const modalContent = document.createElement('div');
+    modalContent.style.padding = '20px';
+    modalContent.style.borderRadius = '10px';
+    modalContent.style.display = 'flex';
+    modalContent.style.flexDirection = 'column';
+    modalContent.style.alignItems = 'center';
+    modalContent.style.justifyContent = 'center';
+
+    const modalImg = document.createElement('img');
+    modalImg.src = 'https://static.vecteezy.com/system/resources/previews/019/552/599/non_2x/warning-sign-on-transparent-background-free-png.png';
+    modalImg.alt = 'Attention Sign';
+    modalImg.style.width = '130px';
+    modalImg.style.height = '80px';
+    modalImg.style.marginTop = '-30px';
+
+    const modalContentParagraph = document.createElement('p');
+    modalContentParagraph.innerHTML = 'Are you sure you want to report this email?';
+    modalContentParagraph.style.fontSize = '20px';
+    modalContentParagraph.style.fontWeight = 'bold';
+    modalContentParagraph.style.marginTop = '60px';
+
+    const modalBtnContainer = document.createElement('div');
+    modalBtnContainer.style.display = 'flex';
+    modalBtnContainer.style.justifyContent = 'center';
+
+    const modalContentButtonYes = document.createElement('button');
+    modalContentButtonYes.style.padding = '10px 30px';
+    modalContentButtonYes.style.border = '1px transparent';
+    modalContentButtonYes.style.borderRadius = '10px';
+    modalContentButtonYes.style.marginRight = '10px';
+    modalContentButtonYes.style.backgroundColor = 'red'
+    modalContentButtonYes.style.color = 'white';
+    modalContentButtonYes.innerHTML = 'Yes';
+    modalContentButtonYes.id = 'svc-confirm-yes';
+
+    const modalContentButtonNo = document.createElement('button');
+    modalContentButtonNo.style.padding = '10px 30px';
+    modalContentButtonYes.style.border = '1px solid #7c7c7c';
+    modalContentButtonNo.style.borderRadius = '10px';
+    modalContentButtonNo.style.backgroundColor = 'white';
+    modalContentButtonNo.style.color = 'black';
+    modalContentButtonNo.innerHTML = 'No';
+    modalContentButtonNo.id = 'svc-confirm-no';
+
+    modalBtnContainer.appendChild(modalContentButtonYes);
+    modalBtnContainer.appendChild(modalContentButtonNo);
+    modalContent.appendChild(modalImg);
+    modalContent.appendChild(modalContentParagraph);
+    modalContent.appendChild(modalBtnContainer);
+    modalOverlay.appendChild(modalContent);
+    backgroundOverlay.appendChild(modalOverlay);
+    document.body.appendChild(backgroundOverlay);
+
+     return new Promise((resolve) => {
+       setTimeout(() => {
+            const yesBtn = document.getElementById('svc-confirm-yes');
+            const noBtn = document.getElementById('svc-confirm-no');
+
+            yesBtn.onclick = () => {
+                document.body.removeChild(backgroundOverlay);
+                resolve(true);
+            };
+            noBtn.onclick = () => {
+                document.body.removeChild(backgroundOverlay);
+                resolve(false);
+            };
+
+            backgroundOverlay.addEventListener('click', (e) => {
+                if(e.target === backgroundOverlay) {
+                    document.body.removeChild(backgroundOverlay);
+                    resolve(false);
+                }
+            });
+        }, 0);
+    });
+
+}
+
 const addCustomButton = () => {
     // Prevent duplicate buttons
     if (document.querySelector('#svc-custom-button')) return;
   
     // Gmail's subject/title is in an element with the `h2` tag and `data-legacy-thread-id`
     const toolBarContainer = document.querySelector('div.bHJ');
-    if (!toolBarContainer) {
-        console.log('Toolbar container not found!');
-        return;
-    }
 
     const emailTitleContainer = document.querySelector('h2[data-legacy-thread-id]');
-    if (!emailTitleContainer) {
-        console.log('Email title not found!');
-        return;
-    }
 
-    // Create wrapper div and button
     const div = document.createElement('div');
     const img = document.createElement('img');
     const mailBtn = document.createElement('button');
@@ -48,6 +174,7 @@ const addCustomButton = () => {
 
     mailBtn.appendChild(img);
     div.appendChild(mailBtn);
+    toolBarContainer.appendChild(div);
 
     // Adding hover effect using mouse events
     div.addEventListener('mouseenter', () => {
@@ -61,35 +188,30 @@ const addCustomButton = () => {
         div.style.transform = 'scale(1)';      // Reset size
     });
 
+   
+
     mailBtn.addEventListener('click', async () => {
-        const designatedEmail = "it@ebcallcenter.com";
+        const confirm = await createModal();
+        if (!confirm) return;
+
+        const designatedEmail = "louise.balili@selectvoicecom.com";
         const threadId = emailTitleContainer.getAttribute('data-legacy-thread-id');
      
-        if (!threadId) {
-            console.error('Thread ID not found!');
-            return;
-        }
-
         try {
             const token = await getAccessToken();
             await forwardEmail(threadId, designatedEmail, token);
             alert('Email forwarded successfully!');
+
+            if (!token) {
+                console.error('token not found!');
+                return;
+            }
         } catch (error) {
             console.error('Error forwarding email:', error);
             alert('Failed to forward email.');
         }
     });
-  
-    const firstButton = toolBarContainer.querySelector('div[role="button"]');
-    if (firstButton && toolBarContainer.contains(firstButton)) {
-        toolBarContainer.insertBefore(div, firstButton);
-    } else {
-        console.warn('⚠️ firstButton not found inside toolbar — appending at end instead.');
-        toolBarContainer.appendChild(div);
-    }
     
-
-    console.log('✅ Custom button added to Gmail toolbar');
   };
 
   // Function to get OAuth 2.0 access token
@@ -130,11 +252,9 @@ const getAccessToken = () => {
   
   // Use MutationObserver to detect when a new email is opened
   const observer = new MutationObserver(() => {
-    console.log('Mutation detected!');
 
     const isEmailOpen = document.querySelector('h2[data-legacy-thread-id]');
     if (isEmailOpen) {
-        console.log('Email is open! Adding custom button...', isEmailOpen);
       addCustomButton();
     }
   });
