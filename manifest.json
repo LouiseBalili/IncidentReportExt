@@ -16,7 +16,14 @@
   "host_permissions": ["https://mail.google.com/*"],
   "oauth2": {
     "client_id": "804357090273-khsrgv3l37cjh7tl5vd9plt97321fae7.apps.googleusercontent.com",
-    "scopes": ["https://www.googleapis.com/auth/gmail.modify"]
+    "scopes": [
+      "https://www.googleapis.com/auth/gmail.modify",
+      "https://www.googleapis.com/auth/gmail.send",
+      "https://www.googleapis.com/auth/gmail.readonly"
+    ]
+  },
+  "background": {
+    "service_worker": "popup/background.js"
   },
   "web_accessible_resources": [
     {
