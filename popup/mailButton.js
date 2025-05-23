@@ -169,22 +169,25 @@ const addCustomButton = () => {
     emailThreads.forEach((thread, index) => {
         if(thread.querySelector(`#svc-custom-button-${index}`)) return;
 
-        const headerContainer = thread.querySelector('div.gE');
+        const moreBtnContainer = thread.querySelector('td.gH.acX.bAm');
 
-        if (!headerContainer) return;
+        if (!moreBtnContainer) return;
 
         const div = document.createElement('div');
         const img = document.createElement('img');
         const mailBtn = document.createElement('button');
   
         div.id = `svc-custom-button-${index}`;
+        div.setAttribute('role', 'button');
+        div.setAttribute('tabindex', '0'); 
+        div.style.marginLeft = '10px';
         div.style.cursor = 'pointer';
         div.style.width = '32px';
         div.style.height = '32px';
         div.style.backgroundColor = 'white';
         div.style.borderRadius = '50%';
         div.style.border = '2px solid grey';
-        div.style.display = 'flex';
+        div.style.display = 'inline-flex';
         div.style.overflow = 'hidden';
     
         img.src = chrome.runtime.getURL('images/SVCLogo.png');
@@ -205,7 +208,7 @@ const addCustomButton = () => {
 
         mailBtn.appendChild(img);
         div.appendChild(mailBtn);
-        headerContainer.appendChild(div);
+        moreBtnContainer.appendChild(div);
 
         // Adding hover effect using mouse events
         div.addEventListener('mouseenter', () => {
@@ -222,12 +225,28 @@ const addCustomButton = () => {
         const waitAndPrefill = () => {
             const interval = setInterval(() => {
                 const toField = document.querySelector('input[aria-label="To recipients"]');
-                if (toField) {
+                const ccToggleBtn = document.querySelector('span[aria-label="Add Cc recipients ‪(Ctrl-Shift-C)‬"]');
+
+                 // If CC toggle is visible and CC input not yet present, click to open
+                if (ccToggleBtn && !document.querySelector('input[aria-label="CC recipients"]')) {
+                    ccToggleBtn.click();
+                    return; // Wait for next loop for CC field to load
+                }
+
+                const ccField = document.querySelector('input[aria-label="CC recipients"]');
+
+                if (toField && ccField) {
                     toField.focus();
-                    toField.value = 'it@ebcallcenter.com, compliance@selectvoicecom.com';
+                    toField.value = 'it@ebcallcenter.com';
                     toField.dispatchEvent(new Event('input', { bubbles: true }));
                     toField.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }));
                     toField.dispatchEvent(new KeyboardEvent('keyup', { key: 'Enter', bubbles: true }));
+
+                    ccField.focus();
+                    ccField.value = 'compliance@selectvoicecom.com';
+                    ccField.dispatchEvent(new Event('input', { bubbles: true }));
+                    ccField.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }));
+                    ccField.dispatchEvent(new KeyboardEvent('keyup', { key: 'Enter', bubbles: true }));
                         
                     clearInterval(interval);
                 }
