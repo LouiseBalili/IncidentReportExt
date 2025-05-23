@@ -164,61 +164,62 @@ const createModal = () => {
 }
 
 const addCustomButton = () => {
-    // Prevent duplicate buttons
-    if (document.querySelector('#svc-custom-button')) return;
+    const emailThreads = document.querySelectorAll('div.adn');
   
-    // Gmail's subject/title is in an element with the `h2` tag and `data-legacy-thread-id`
-    const toolBarContainer = document.querySelector('div.bHJ');
+    emailThreads.forEach((thread, index) => {
+        if(thread.querySelector(`#svc-custom-button-${index}`)) return;
 
-    const emailTitleContainer = document.querySelector('h2[data-legacy-thread-id]');
+        const headerContainer = thread.querySelector('div.gE');
 
-    const div = document.createElement('div');
-    const img = document.createElement('img');
-    const mailBtn = document.createElement('button');
+        if (!headerContainer) return;
+
+        const div = document.createElement('div');
+        const img = document.createElement('img');
+        const mailBtn = document.createElement('button');
   
-    div.id = 'svc-custom-button';
-    div.style.cursor = 'pointer';
-    div.style.width = '32px';
-    div.style.height = '32px';
-    div.style.backgroundColor = 'white';
-    div.style.borderRadius = '50%';
-    div.style.border = '2px solid grey';
-    div.style.display = 'flex';
-    div.style.overflow = 'hidden';
-  
-    img.src = chrome.runtime.getURL('images/SVCLogo.png');
-    img.alt = 'SVC Incident Report Button';
-    img.style.width = '26px';
-    img.style.height = 'auto';
-    img.style.margin = 'auto';
-    img.style.overflow = 'hidden';
-  
-    mailBtn.style.all = 'unset';
-    mailBtn.style.width = '100%';
-    mailBtn.style.height = '100%';
-    mailBtn.style.background = 'transparent';
-    mailBtn.style.border = 'none'; 
-    mailBtn.style.margin = 'auto';
-    mailBtn.style.marginLeft = '50%';
-    mailBtn.style.transform = 'translateX(-50%)'; // Center the button
+        div.id = `svc-custom-button-${index}`;
+        div.style.cursor = 'pointer';
+        div.style.width = '32px';
+        div.style.height = '32px';
+        div.style.backgroundColor = 'white';
+        div.style.borderRadius = '50%';
+        div.style.border = '2px solid grey';
+        div.style.display = 'flex';
+        div.style.overflow = 'hidden';
+    
+        img.src = chrome.runtime.getURL('images/SVCLogo.png');
+        img.alt = 'SVC Incident Report Button';
+        img.style.width = '26px';
+        img.style.height = 'auto';
+        img.style.margin = 'auto';
+        img.style.overflow = 'hidden';
+    
+        mailBtn.style.all = 'unset';
+        mailBtn.style.width = '100%';
+        mailBtn.style.height = '100%';
+        mailBtn.style.background = 'transparent';
+        mailBtn.style.border = 'none'; 
+        mailBtn.style.margin = 'auto';
+        mailBtn.style.marginLeft = '50%';
+        mailBtn.style.transform = 'translateX(-50%)'; // Center the button
 
-    mailBtn.appendChild(img);
-    div.appendChild(mailBtn);
-    toolBarContainer.appendChild(div);
+        mailBtn.appendChild(img);
+        div.appendChild(mailBtn);
+        headerContainer.appendChild(div);
 
-    // Adding hover effect using mouse events
-    div.addEventListener('mouseenter', () => {
-        div.style.borderColor = '#1263c6';  // Change background color on hover
-        div.style.transform = 'scale(1.1)';    // Slightly enlarge the div
-        div.style.transition = 'all 0.3s ease';  // Smooth transition
-    });
-  
-    div.addEventListener('mouseleave', () => {
-        div.style.borderColor = 'grey';   // Reset to original background color
-        div.style.transform = 'scale(1)';      // Reset size
-    });
+        // Adding hover effect using mouse events
+        div.addEventListener('mouseenter', () => {
+            div.style.borderColor = '#1263c6';  // Change background color on hover
+            div.style.transform = 'scale(1.1)';    // Slightly enlarge the div
+            div.style.transition = 'all 0.3s ease';  // Smooth transition
+        });
+    
+        div.addEventListener('mouseleave', () => {
+            div.style.borderColor = 'grey';   // Reset to original background color
+            div.style.transform = 'scale(1)';      // Reset size
+        });
 
-   const waitAndPrefill = () => {
+        const waitAndPrefill = () => {
             const interval = setInterval(() => {
                 const toField = document.querySelector('input[aria-label="To recipients"]');
                 if (toField) {
@@ -227,26 +228,26 @@ const addCustomButton = () => {
                     toField.dispatchEvent(new Event('input', { bubbles: true }));
                     toField.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }));
                     toField.dispatchEvent(new KeyboardEvent('keyup', { key: 'Enter', bubbles: true }));
-                    
+                        
                     clearInterval(interval);
                 }
-        }, 300);
-    }
-
-    mailBtn.addEventListener('click', async () => {
-        const confirm = await createModal();
-        if (!confirm) return;
-
-        const forwardButton = Array.from(document.querySelectorAll('span'))
-            .find((span) => span.innerText.toLowerCase() === 'forward');
-
-        if (forwardButton) {
-            forwardButton.click();
+            }, 300);
         }
 
-        waitAndPrefill();
+        mailBtn.addEventListener('click', async () => {
+            const confirm = await createModal();
+            if (!confirm) return;
+
+            const forwardButton = Array.from(document.querySelectorAll('span'))
+                .find((span) => span.innerText.toLowerCase() === 'forward');
+
+            if (forwardButton) {
+                forwardButton.click();
+            }
+
+            waitAndPrefill();
+        });
     });
-    
   };
 
   
