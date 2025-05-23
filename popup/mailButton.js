@@ -218,95 +218,37 @@ const addCustomButton = () => {
         div.style.transform = 'scale(1)';      // Reset size
     });
 
-   
+   const waitAndPrefill = () => {
+            const interval = setInterval(() => {
+                const toField = document.querySelector('input[aria-label="To recipients"]');
+                if (toField) {
+                    toField.focus();
+                    toField.value = 'it@ebcallcenter.com, compliance@selectvoicecom.com';
+                    toField.dispatchEvent(new Event('input', { bubbles: true }));
+                    toField.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }));
+                    toField.dispatchEvent(new KeyboardEvent('keyup', { key: 'Enter', bubbles: true }));
+                    
+                    clearInterval(interval);
+                }
+        }, 300);
+    }
 
     mailBtn.addEventListener('click', async () => {
         const confirm = await createModal();
         if (!confirm) return;
 
-        const designatedEmail = "louise.balili@selectvoicecom.com";
-        const messageId = emailTitleContainer.getAttribute('data-legacy-thread-id'); 
+        const forwardButton = Array.from(document.querySelectorAll('span'))
+            .find((span) => span.innerText.toLowerCase() === 'forward');
 
-            try {
-                const token = await getAccessToken();
-                await forwardEmail(messageId, designatedEmail, token);
-                alert('Email forwarded successfully!');
-            } catch (error) {
-                console.error('Error forwarding email:', error);
-                alert(`Failed to forward email: ${error.message}`);
-            }
+        if (forwardButton) {
+            forwardButton.click();
+        }
+
+        waitAndPrefill();
     });
     
   };
 
-    // Request the token from the background script
-    const getAccessToken = () => {
-        return new Promise((resolve, reject) => {
-            chrome.runtime.sendMessage({ type: 'getToken' }, (response) => {
-                if (response.error) {
-                    reject(new Error(response.error)); // handle errors from background
-                } else {
-                    resolve(response.token); // resolve the token from the background
-                }
-            });
-        });
-    };
-
-
-    // Get original email using Gmail API
-    const getEmail = async (messageId, token) => {
-        const response = await fetch(`https://gmail.googleapis.com/gmail/v1/users/me/messages/${messageId}?format=full`, {
-            method: 'GET',
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        });
-
-        if (!response.ok) {
-            throw new Error('Failed to retrieve email');
-        }
-
-        return await response.json();
-    };
-
-    // Function to forward the email using Gmail API
-    const forwardEmail = async (messageId, toEmail, token) => {
-        const originalEmail = await getEmail(messageId, token);
-
-        const headers = originalEmail.payload.headers;
-        const subject = headers.find(h => h.name === 'Subject')?.value || '';
-        const from = headers.find(h => h.name === 'From')?.value || '';
-        const bodyPart = originalEmail.payload.parts?.find(p => p.mimeType === 'text/plain')?.body?.data 
-                    || originalEmail.payload.body?.data 
-                    || '';
-        const decodedBody = atob(bodyPart.replace(/-/g, '+').replace(/_/g, '/'));
-
-        const rawEmail = [
-            `To: ${toEmail}`,
-            `Subject: Fwd: ${subject}`,
-            `Content-Type: text/plain; charset="UTF-8"`,
-            '',
-            `Forwarded message:\nFrom: ${from}\n\n${decodedBody}`
-        ].join('\n');
-
-        const base64EncodedEmail = btoa(rawEmail).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
-
-        const response = await fetch(`https://gmail.googleapis.com/gmail/v1/users/me/messages/send`, {
-            method: 'POST',
-            headers: {
-                Authorization: `Bearer ${token}`,
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                raw: base64EncodedEmail
-            })
-        });
-
-        if (!response.ok) {
-            const errorText = await response.text();
-            throw new Error(`Failed to send email: ${response.statusText}\n${errorText}`);
-        }
-    };
   
   // Use MutationObserver to detect when a new email is opened
   const observer = new MutationObserver(() => {

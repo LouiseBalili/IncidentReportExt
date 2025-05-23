@@ -22,9 +22,6 @@
       "https://www.googleapis.com/auth/gmail.readonly"
     ]
   },
-  "background": {
-    "service_worker": "popup/background.js"
-  },
   "web_accessible_resources": [
     {
       "resources": [
