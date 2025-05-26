@@ -166,8 +166,12 @@ const createModal = () => {
 const addCustomButton = () => {
     const emailThreads = document.querySelectorAll('div.adn');
   
-    emailThreads.forEach((thread, index) => {
-        if(thread.querySelector(`#svc-custom-button-${index}`)) return;
+    emailThreads.forEach((thread) => {
+        // if(thread.querySelector(`#svc-custom-button-${index}`)) return;
+        if(thread.classList.contains('svc-custom-button-added')) return;
+
+        const messageId = thread.getAttribute('data-legacy-message-id');
+        if (!messageId) return;
 
         const moreBtnContainer = thread.querySelector('td.gH.acX.bAm');
 
@@ -177,7 +181,6 @@ const addCustomButton = () => {
         const img = document.createElement('img');
         const mailBtn = document.createElement('button');
   
-        div.id = `svc-custom-button-${index}`;
         div.setAttribute('role', 'button');
         div.setAttribute('tabindex', '0'); 
         div.style.marginLeft = '10px';
@@ -204,11 +207,14 @@ const addCustomButton = () => {
         mailBtn.style.border = 'none'; 
         mailBtn.style.margin = 'auto';
         mailBtn.style.marginLeft = '50%';
-        mailBtn.style.transform = 'translateX(-50%)'; // Center the button
+        mailBtn.style.transform = 'translateX(-50%)';
+        mailBtn.dataset.messageId = messageId;
+        mailBtn.id = `svc-custom-button-${messageId}`;
 
         mailBtn.appendChild(img);
         div.appendChild(mailBtn);
         moreBtnContainer.appendChild(div);
+        thread.classList.add('svc-custom-button-added');
 
         // Adding hover effect using mouse events
         div.addEventListener('mouseenter', () => {
@@ -257,19 +263,37 @@ const addCustomButton = () => {
             const confirm = await createModal();
             if (!confirm) return;
 
+            const msgId = mailBtn.dataset.messageId;
+
+            const targetThread = Array.from(document.querySelectorAll('div.adn'))
+                .find(div => div.getAttribute('data-legacy-message-id') === msgId);
+
+            if (!targetThread) {
+                console.warn('Target thread not found for message ID:', msgId);
+                return;
+            }
+
+            const threadHeader = targetThread.querySelector('span[role="gridcell"][email], div[role="gridcell"]');
+                if (threadHeader) {
+                    threadHeader.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+                } else {
+                    console.warn('Thread header not found for message ID:', msgId);
+                }
+
             const forwardButton = Array.from(document.querySelectorAll('span'))
                 .find((span) => span.innerText.toLowerCase() === 'forward');
 
             if (forwardButton) {
                 forwardButton.click();
+                waitAndPrefill();
+            } else {
+                console.warn('Forward button not found in the thread.', msgId);
             }
 
-            waitAndPrefill();
         });
     });
   };
 
-  
   // Use MutationObserver to detect when a new email is opened
   const observer = new MutationObserver(() => {
 
