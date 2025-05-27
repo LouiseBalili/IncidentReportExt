@@ -263,22 +263,12 @@ const addCustomButton = () => {
             const confirm = await createModal();
             if (!confirm) return;
 
-            const msgId = mailBtn.dataset.messageId;
-
-            const targetThread = Array.from(document.querySelectorAll('div.adn'))
-                .find(div => div.getAttribute('data-legacy-message-id') === msgId);
-
-            if (!targetThread) {
-                console.warn('Target thread not found for message ID:', msgId);
+            const messageId = mailBtn.dataset.messageId;
+            const threadSelected = document.querySelector(`div.adn[data-legacy-message-id="${messageId}"]`);
+            if (messageId !== threadSelected?.getAttribute('data-legacy-message-id')) {
+                console.warn('Message ID and thread selected is not identical', messageId, threadSelected);
                 return;
             }
-
-            const threadHeader = targetThread.querySelector('span[role="gridcell"][email], div[role="gridcell"]');
-                if (threadHeader) {
-                    threadHeader.dispatchEvent(new MouseEvent('click', { bubbles: true }));
-                } else {
-                    console.warn('Thread header not found for message ID:', msgId);
-                }
 
             const forwardButton = Array.from(document.querySelectorAll('span'))
                 .find((span) => span.innerText.toLowerCase() === 'forward');
@@ -287,9 +277,8 @@ const addCustomButton = () => {
                 forwardButton.click();
                 waitAndPrefill();
             } else {
-                console.warn('Forward button not found in the thread.', msgId);
+                console.warn('Forward button not found in the thread.');
             }
-
         });
     });
   };

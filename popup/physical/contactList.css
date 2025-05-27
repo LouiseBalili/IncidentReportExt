@@ -123,8 +123,16 @@ body {
  .contact_dropdown {
       width: 100%;
       margin-left: -15px;
-      
+      /* max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.5s ease, opacity 0.3s ease; */
  }
+
+ /* .contact_dropdown.show {
+  max-height: 1000px;
+  opacity: 1;
+   } */
 
  .contact_dropdown li {
    width: 95%;
