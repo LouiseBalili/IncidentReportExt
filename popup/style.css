@@ -5,6 +5,7 @@
  .extensionModal {
     margin: 10px;
     width: 200px;
+    height: auto;
     line-height: 0;
  }
 
@@ -135,14 +136,6 @@
     display: inline;
     margin-bottom: -5px;
     color: rgb(0, 221, 29);
- }
-
- .checkSVG {
-    width: 20px;
-    height: 20px;;
-    display: inline;
-    margin-bottom: -5px;
-    color: rgb(9, 111, 158);
  }
 
  .physical_btns {
