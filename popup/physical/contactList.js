@@ -67,4 +67,38 @@ document.addEventListener('DOMContentLoaded', () => {
             hospitalSVGDown.style.display = 'block';
         }
     });
+
+    const setupDropdown = (buttonId, contentId) => {
+        const button = document.getElementById(buttonId);
+        const content = document.getElementById(contentId);
+
+        button.addEventListener('click', () => {
+            const isOpen = content.classList.contains('open');
+
+            if(isOpen) {
+                content.style.height = content.scrollHeight + 'px';
+                
+                content.style.height = '0';
+                content.classList.remove('open');
+            } else {
+                content.style.height = '0';
+                content.classList.add('open');
+
+                requestAnimationFrame(() => {
+                    content.style.height = content.scrollHeight + 'px';
+                });
+                
+                const transitionEndHandler = () => {
+                    content.style.height = 'auto';
+                    content.removeEventListener('transitionend', transitionEndHandler);
+                };
+                content.addEventListener('transitionend', transitionEndHandler);
+            }
+        });
+    };
+
+    setupDropdown('erufContactsDD', 'erufContentsDD');
+    setupDropdown('fireContactsDD', 'fireContentsDD');  
+    setupDropdown('policeContactsDD', 'policeContentsDD');
+    setupDropdown('hospitalContactsDD', 'hospitalContentsDD');
 });

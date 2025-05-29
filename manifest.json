@@ -20,7 +20,6 @@
         "images/*",
         "popup/script.js",
         "popup/information/phishingGuideline/*",
-        "/popup/information/urlChecker/*",
         "/popup/physical/*"
       ],
       "matches": [
@@ -35,7 +34,6 @@
       "matches": ["https://mail.google.com/*"],
       "js": ["popup/script.js",
       "popup/information/phishingGuideline/phishGuide.js",
-      "popup/information/urlChecker/WebSecurity.js",
       "popup/physical/contactList.js",
       "popup/mailButton.js"
     ],

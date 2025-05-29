@@ -41,7 +41,6 @@ body {
     font-size: 20px;
     margin: 0;
     padding-top: 10px;
-   
  }
 
  .contactListContent {
@@ -123,16 +122,11 @@ body {
  .contact_dropdown {
       width: 100%;
       margin-left: -15px;
-      /* max-height: 0;
       overflow: hidden;
-      opacity: 0;
-      transition: max-height 0.5s ease, opacity 0.3s ease; */
+      height: 0;
+      transition: height 0.3s ease;
  }
 
- /* .contact_dropdown.show {
-  max-height: 1000px;
-  opacity: 1;
-   } */
 
  .contact_dropdown li {
    width: 95%;
@@ -156,3 +150,5 @@ body {
       justify-content: space-between;
       align-items: center;
  }
+
+ 
