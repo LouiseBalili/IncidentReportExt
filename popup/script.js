@@ -41,11 +41,11 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Event listener for "Check URL"
-    document.getElementById('checkURL').addEventListener('click', () => {
-        window.open('information/urlChecker/checkValidity.html', '_blank', 'width=500, height=450, top=150');
+    document.getElementById('linkChecker').addEventListener('click', () => {
+        window.open('https://nordvpn.com/link-checker/', '_blank', 'width=500, height=450, top=150');
     });
 
-    // Event listener for "RTimeProtect"
+    // Event listener for "Phishing Guideline"
     document.getElementById('phishingGuideline').addEventListener('click', () => {
         window.open('information/phishingGuideline/phishGuide.html', '_blank', 'width=550, height=650, top=125');
     });
