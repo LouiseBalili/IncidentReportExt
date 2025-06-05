@@ -37,17 +37,42 @@ document.addEventListener("DOMContentLoaded", function () {
         const subject = 'Information Security Incident - (Specify Reason for Email/Report)';
         const body = '';
         const gmailURL = `https://mail.google.com/mail/?view=cm&fs=1&to=${recipient}&cc=${ccRecipient}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        window.open(gmailURL, '_blank', 'width=750, height=750, top=75, scrollbars=yes');
+        const width = 750;
+        const height = 750;
+        const left = (window.screen.width - width) / 2;
+        const top = (window.screen.height - height) / 2;
+
+        window.open(
+            gmailURL, 
+            '_blank', 
+            `width=${width},height=${height},top=${top},left=${left}`,
+        );
     });
 
     // Event listener for "Check URL"
     document.getElementById('linkChecker').addEventListener('click', () => {
-        window.open('https://nordvpn.com/link-checker/', '_blank', 'width=500, height=450, top=150');
+        const width = 500;
+        const height = 750;
+        const left = (window.screen.width - width) / 2;
+        const top = (window.screen.height - height) / 2;
+
+        window.open(
+            'https://nordvpn.com/link-checker/',
+            '_blank',
+            `width=${width},height=${height},top=${top},left=${left}`
+        );
     });
 
     // Event listener for "Phishing Guideline"
     document.getElementById('phishingGuideline').addEventListener('click', () => {
-        window.open('information/phishingGuideline/phishGuide.html', '_blank', 'width=550, height=650, top=125');
+        const width = 550;
+        const height = 650;
+        const left = (window.screen.width - width) / 2;
+        const top = (window.screen.height - height) / 2;
+        window.open('information/phishingGuideline/phishGuide.html', 
+            '_blank', 
+             `width=${width},height=${height},top=${top},left=${left}`
+        );
     });
 
     // Event listener for "Send Mail Physical"
@@ -56,12 +81,30 @@ document.addEventListener("DOMContentLoaded", function () {
         const subject = 'Physical Security Incident - (Specify Reason for Email/Report)';
         const body = '';
         const gmailURL = `https://mail.google.com/mail/?view=cm&fs=1&to=${recipient}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        window.open(gmailURL, '_blank', 'width=750, height=750, top=75, scrollbar=yes');
+        const width = 750;
+        const height = 750;
+        const left = (window.screen.width - width) / 2;
+        const top = (window.screen.height - height) / 2;
+
+        window.open(
+            gmailURL, 
+            '_blank', 
+            `width=${width},height=${height},top=${top},left=${left}`
+        );
     });
 
     // Event listener for "Contact Number List
     document.getElementById('contactNum').addEventListener('click', () => {
-       window.open('physical/contactList.html', '_blank', 'width=600, height=600, top=150'); 
+        const width = 600;
+        const height = 600;
+        const left = (window.screen.width - width) / 2;
+        const top = (window.screen.height - height) / 2;
+
+       window.open(
+        'physical/contactList.html', 
+        '_blank', 
+        `width=${width},height=${height},top=${top},left=${left}`
+        ); 
     });
 
     const CWSCheckURL = document.getElementById('CWSCheckURL');
