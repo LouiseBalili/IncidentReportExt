@@ -1,6 +1,7 @@
    body {
     background: linear-gradient(90deg,rgba(132, 202, 232, 1) 0%, rgba(135, 208, 237, 1) 50%, rgba(153, 190, 232, 1) 100%);
     font-family: 'Poppins';
+    overflow: hidden;
   }
 
   body::-webkit-scrollbar {
@@ -32,7 +33,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
     transform-style: preserve-3d;
     perspective: 600px;
     --items: 5;
@@ -41,7 +41,7 @@
   
   div.item {
     position: absolute;
-    width: 300px;
+    width: clamp(300px, 30vw, 450px);
     height: 400px;
     padding: 10px;
     border-radius: 10px;
@@ -108,16 +108,30 @@
   }
 
   .footerLogo {
-    width: 160px;
-    height: 40px;
+    width: 225px;
+    height: 50px;
     position: absolute;
-    bottom: 15px;
+    bottom: 25px;
     left: 50%;
     transform: translateX(-50%);
   }
 
-  @media only screen and (max-height: 550px) {
+  @media only screen and (max-height: 575px) {
     .footerLogo {
       display: none;
     }
   }
+
+  @media only screen and (min-height: 550px) {
+    div.item {
+      height: 425px;
+    }
+  }
+
+   @media only screen and (min-height: 750px) {
+    div.item {
+      height: 550px;
+      margin-top: 125px;
+    }
+  }
+  

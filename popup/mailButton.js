@@ -167,7 +167,6 @@ const addCustomButton = () => {
     const emailThreads = document.querySelectorAll('div.adn');
   
     emailThreads.forEach((thread) => {
-        // if(thread.querySelector(`#svc-custom-button-${index}`)) return;
         if(thread.classList.contains('svc-custom-button-added')) return;
 
         const messageId = thread.getAttribute('data-legacy-message-id');

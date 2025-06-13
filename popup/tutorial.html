@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Select VoiceCom Extension - Guide</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 0 20px;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f9f9f9;
+    }
+    h1 {
+      color: #2c3e50;
+      text-align: center;
+    }
+    ul {
+      margin-top: 20px;
+    }
+    button {
+      margin-top: 30px;
+      background-color: #256cc3;
+      border: none;
+      color: white;
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      display: block;
+      width: 100%;
+      max-width: 200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    button:hover {
+      background-color: #348af3;
+    }
+    footer {
+      margin-top: 40px;
+      font-size: 0.9em;
+      text-align: center;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <h1>Congratulations you have just installed <br>
+    Select VoiceCom Extension!</h1>
+  <p>Thank you for installing our extension. Here's a quick guide to get you started:</p>
+  <ul>
+    <li><strong>Step 1:</strong> Explore the extension icon in your browser toolbar.</li>
+    <li><strong>Step 2:</strong> Click the icon to access key features.</li>
+    <li><strong>Step 3:</strong> Pin the extension to toolbar for easy navigation and convenience. </li>
+    <li><strong>Step 4:</strong> Enjoy a safer, smarter browsing experience!</li>
+  </ul>
+
+  <button id="closeBtn">Safe Browsing!</button>
+
+  <footer>
+    &copy; 2025 Select VoiceCom. All rights reserved.
+  </footer>
+
+<script>
+    document.getElementById('closeBtn').addEventListener('click', () => {
+        chrome.runtime.sendMessage({ action: 'closeTab' });
+    });
+</script>
+</body>
+</html>
