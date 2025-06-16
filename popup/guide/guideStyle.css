@@ -1,22 +1,21 @@
     body {
       font-family: 'Poppins', sans-serif;
       margin-top: 20px;
-      line-height: 1.6;
       color: #333;
       background-color: #f9f5f1;
       font-size: large;
     }
     img {
-      display: block;
-      margin: 0 auto;
       width: 200px;
+      margin-left: 20px;
     }
     h3 {
       color: #2c3e50;
+      font-weight: bolder;
     }
     video {
-      max-width: 1080px;
-      max-height: 720px;
+      max-width: 800px;
+      max-height: 560px;
     }
     #closeButton {
       margin-top: 30px;
@@ -36,15 +35,15 @@
     #closeButton:hover {
       background-color: #348af3;
     }
-    .buttons-container {
+    .buttons_container {
       margin-bottom: 20px;
-      margin: 0 20 0 0;
+      max-width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
     }
      .btns_button_active {
     border-radius: 8px;
-    background-color: white;
-    color: #4d4d4d;
-    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.12), 0px 3px 1px rgba(0, 0, 0, 0.04);
+    color: white;
     }
     .btns_button {
         font-size: 16px;
@@ -53,29 +52,57 @@
         line-height: 20px;
         margin-bottom: 10px;
         border: 0;
-        color: #888888;
+        color: white;
+        background-color: transparent;
         cursor: pointer;
-        text-align: center;
+        text-align: left;
+        line-height: 1.6;
         transition: 0.3s ease;
     }
     .guide_container {
       display: flex;
       justify-content: center;
-      margin-top: 20px;;
+      margin: 20px 0 0 0;
+      padding: 0;
+      border-radius: 20px;
     }
-    .guide-tabs {
+    .guide_tabs {
       background-color: #348af3;
-      max-width: fit-content;
-      max-height: fit-content;
+      max-width: 350px;
     }
-    .guide-content {
-      max-width: 1200px;
-      margin: auto;
-      padding: 10px;
+    .guide_content_container {
+      max-width: 1000px;
       background-color: #fff;
-      border-radius: 10px;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
+
+    .guide_content {
+      margin: 40px 40px;
+      
+    }
+
+    div.step2 {
+      display: none;
+    }
+
+    .prevBtn {
+      text-decoration: none;
+      color: #348af3;
+    }
+
+    .prevBtn:hover {
+      text-decoration: underline;
+    }
+
+    .nextBtn {
+      text-decoration: none;
+      color: #348af3;
+    }
+
+    .nextBtn:hover {
+      text-decoration: underline;
+    }
+
   .footer {
     background-color: #f9f5f1;
     color: white;
@@ -133,7 +160,7 @@
 
   .bullet-item::before {
     content: "•";   
-    margin: 0 8px 0 0;
+    margin: 0 8px 0 8px;
     color: black;    
     font-size: 24px;
     font-weight: bold;
