@@ -1,6 +1,6 @@
 chrome.runtime.onInstalled.addListener((details) => {
   if (details.reason === 'install') {
-    chrome.tabs.create({ url: 'popup/tutorial.html' });
+    chrome.tabs.create({ url: 'popup/guide/post-install.html' });
   }
 });
 
