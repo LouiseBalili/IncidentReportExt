@@ -6,8 +6,9 @@
       font-size: large;
     }
     img {
-      width: 200px;
-      margin-left: 20px;
+      width:auto;
+      height: 40px;
+      margin-left: 15%;
     }
     h3 {
       color: #2c3e50;
@@ -83,6 +84,12 @@
 
     div.step2 {
       display: none;
+    }
+
+    .navLinks {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
     }
 
     .prevBtn {
