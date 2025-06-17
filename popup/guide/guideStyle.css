@@ -6,17 +6,19 @@
       font-size: large;
     }
     img {
-      width:auto;
+      width: auto;
       height: 40px;
-      margin-left: 15%;
+      margin-left: 35%;
     }
     h3 {
       color: #2c3e50;
       font-weight: bolder;
+      margin-bottom: 5px;
     }
     video {
-      max-width: 800px;
-      max-height: 560px;
+      max-width: 680px;
+      max-height: 480px;
+      margin-top: 5px;
     }
     #closeButton {
       margin-top: 30px;
@@ -37,44 +39,64 @@
       background-color: #348af3;
     }
     .buttons_container {
-      margin-bottom: 20px;
-      max-width: fit-content;
-      margin-left: auto;
-      margin-right: auto;
+      padding:20px 20px 20px 0;
+      width: 100%;
+      margin-top: 40px;
     }
      .btns_button_active {
-    border-radius: 8px;
-    color: white;
+        color: white;
+        width: 100%;
+        background-color: #1e59a1;
     }
     .btns_button {
         font-size: 16px;
-        width: 50%;
-        padding: 9px 10px;
-        line-height: 20px;
+        width: 100%;
+        padding: 10px;
         margin-bottom: 10px;
         border: 0;
         color: white;
         background-color: transparent;
-        cursor: pointer;
         text-align: left;
         line-height: 1.6;
         transition: 0.3s ease;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        cursor: pointer;
+    }
+    .btns_button:hover {
+        background-color: #1e59a1;
+    }
+    .buttonSVG {
+      padding:10px;
+      width: 30px;
+    }
+    .buttonText {
+      width: 125px;
+    }
+    .size-6{
+      width: 30px;
+      height: 30px;
     }
     .guide_container {
       display: flex;
       justify-content: center;
-      margin: 20px 0 0 0;
+      margin: 20px auto 0 auto;
       padding: 0;
-      border-radius: 20px;
+      max-width: 1000px;
     }
     .guide_tabs {
       background-color: #348af3;
       max-width: 350px;
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
     }
     .guide_content_container {
-      max-width: 1000px;
+      max-width: 750px;
       background-color: #fff;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
     }
 
     .guide_content {
@@ -110,10 +132,18 @@
       text-decoration: underline;
     }
 
+    .step1_next {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+    }
+
   .footer {
+    position: absolute;
+    bottom: 0;
+    z-index: -1;
     background-color: #f9f5f1;
     color: white;
-    padding-top: 10px;
     overflow: hidden;
     width: 100%;
   }
@@ -134,13 +164,13 @@
     align-items: center;
     padding: 2rem;
     flex-wrap: wrap;
-    margin: 0 auto;
+    margin: 0;
+    
   }
 
   .footer-left {
     display: flex;
     align-items: center;
-    gap: 10px;
     font-size: 1rem;
   }
 
