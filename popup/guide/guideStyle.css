@@ -8,7 +8,7 @@
     img {
       width: auto;
       height: 40px;
-      margin-left: 35%;
+      margin-left: 30%;
     }
     h3 {
       color: #2c3e50;
@@ -16,8 +16,8 @@
       margin-bottom: 5px;
     }
     video {
-      max-width: 680px;
-      max-height: 480px;
+      max-width: 800px;
+      max-height: 600px;
       margin-top: 5px;
     }
     #closeButton {
@@ -82,7 +82,7 @@
       justify-content: center;
       margin: 20px auto 0 auto;
       padding: 0;
-      max-width: 1000px;
+      max-width: 1200px;
     }
     .guide_tabs {
       background-color: #348af3;
@@ -91,7 +91,7 @@
       border-bottom-left-radius: 10px;
     }
     .guide_content_container {
-      max-width: 750px;
+      max-width: 900px;
       background-color: #fff;
       border-top-right-radius: 10px;
       border-bottom-right-radius: 10px;
@@ -160,12 +160,12 @@
   .stayAlertPNG {
     display: block;
     width: auto;
-    max-width: 560px;
+    max-width: 750px;
     height: auto;
-    max-height: 380px;
+    max-height: 443px;
     margin: 0;
-    padding-left: 150px;
-    padding-right: 150px;
+    padding-left: 179px;
+    padding-right: 179px;
   }
 
 .footer {
@@ -180,9 +180,9 @@
   .waves {
     position:relative;
     width: 100%;
-    height:15vh;
-    min-height:200px;
-    max-height:300px;
+    height:30vh;
+    min-height:250px;
+    max-height:350px;
   }
   .parallax > use {
     animation: move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite;
