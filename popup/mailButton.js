@@ -269,6 +269,14 @@ const addCustomButton = () => {
                 return;
             }
 
+            // const moreButton = threadSelected.querySelector('[role="button"][aria-label="More"]');
+            
+            // if(moreButton) {
+            //     moreButton.click();
+            // } else {
+            //     console.warn('More button not found in the thread.');
+            // }
+
             const forwardButton = Array.from(document.querySelectorAll('span'))
                 .find((span) => span.innerText.toLowerCase() === 'forward');
 

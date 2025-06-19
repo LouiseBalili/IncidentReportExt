@@ -12,7 +12,6 @@
   "action": {
       "default_popup": "popup/popup.html"
   },
-  "permissions": ["tabs", "scripting"],
   "host_permissions": ["https://mail.google.com/*"],
   "background": {
     "service_worker": "background.js"
